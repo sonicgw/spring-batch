@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/gw_test?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+    username: gw
+    password: 123456
+  batch:
+    job:
+      enabled: false
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  executor-type: batch
+logging:
+  level:
+    com.code.springbatch.dao: debug
+#zookeeper的配置
+zookeeper:
+  namespace: zkServer
+  serverLists: 127.0.0.1:2181
+
+
+  # simple类型
+simpleJob:
+  cron: 0 0/1 * * * ?
+  shardingTotalCount: 3
+  shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
